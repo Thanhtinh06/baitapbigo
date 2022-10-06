@@ -1,23 +1,13 @@
 def find_max_apple(n, a):
-    list_apple = []
-    list_orange = []
-    for i in range(n):
-        list_apple.append(a[i][0])
-    max_apple = max(list_apple)
-    count = 0
-    index = list_apple.index(max_apple)
-    for i in range(n):
-        if max_apple == a[i][0]:
-            count += 1
-            list_orange.append(a[i][1])
-        else:
-            list_orange.append(0)
-    else:
-        if count == 1:
-            return index + 1
-        else:
-            max_orange = max(list_orange)
-            return list_orange.index(max_orange) + 1
+    max_index = 0
+    max_tui = a[max_index]
+    for i in range(1, n):
+        tao = a[i][0]
+        cam = a[i][1]
+        if tao > max_tui[0] or tao == max_tui[0] and cam > max_tui[1]:
+            max_tui = a[i]
+            max_index = i
+    return max_index + 1
 
 
 n = int(input())

@@ -10,11 +10,10 @@ def check_student(n, a):
                 count_male += 1
             else:
                 count_female += 1
+        if count_female == count_male:
+            return True
         else:
-            if count_female == count_male:
-                return True
-            else:
-                return False
+            return False
 
 
 n = int(input())
