@@ -8,8 +8,8 @@ class Solution:
             return 1
         elif n == 0:
             return 0
-        return self.tribonacci(self, n - 3) + self.tribonacci(self, n - 2) + self.tribonacci(self, n - 1)
+        return self.tribonacci(n - 3) + self.tribonacci(n - 2) + self.tribonacci(n - 1)
 
 
 n = int(input())
-print(Solution.tribonacci(Solution, n))
+print(Solution.tribonacci(n))
