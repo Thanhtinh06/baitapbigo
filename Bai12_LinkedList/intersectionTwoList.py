@@ -6,40 +6,40 @@ class ListNode:
         self.next = next
 
 class Solution:
-    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-        if headA is headB:
-          return headA
-        count_A = 0
-        count_B = 0
-        pointerA = headA
-        pointerB = headB
-        while pointerA != None:
-            count_A += 1
-            pointerA = pointerA.next
-        while pointerB != None:
-            count_B += 1
-            pointerB = pointerB.next
-        skip_node = abs(count_A - count_B)
-        
-        ansA = headA
-        ansB = headB
-        
-        if count_A > count_B:
-            self.update_head(ansA,skip_node)
-        elif count_A < count_B:
-            self.update_head(ansB,skip_node)
-              
-        runA = ansA
-        runB = ansB
-        while runA != None and runB != None:
-            if runA is runB:
-              return runA
-            runA = runA.next
-            runB = runB.next
-        return None
-    
+  
+    def get_count(self,head):
+        count = 0
+        while head != None:
+            count += 1
+            head = head.next
+        return count
+  
     def update_head(self,head,skip_node):
         skip_nodeA = skip_node
         while skip_nodeA != 0:
           head = head.next
           skip_nodeA -= 1
+        return head
+    
+    
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        if headA is headB:
+          return headA
+        
+        count_A = self.get_count(headA)
+        count_B = self.get_count(headB)
+        skip_node = abs(count_A - count_B)
+        
+        if count_A > count_B:
+            headA = self.update_head(headA,skip_node)
+        elif count_A < count_B:
+            headB = self.update_head(headB,skip_node)
+
+        while headA != None and headB != None:
+            if headA is headB:
+              return headA
+            headA = headA.next
+            headB = headB.next
+        return None
+    
+   
