@@ -29,7 +29,7 @@
 n = int(input())
 a = list(map(int, input().split()))
 
-fre = [0] * (11)
+fre = [0] * (10**5 + 5)
 diff = 0
 j = 0
 longest_range = 0
